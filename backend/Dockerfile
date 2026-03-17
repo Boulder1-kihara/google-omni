@@ -15,4 +15,4 @@ COPY . .
 
 # Run the Uvicorn web service on container startup. 
 # Google Cloud Run expects traffic on port 8080 by default.
-CMD ["uvicorn", "main:app", "--host", "0.0.0.0", "--port", "8080"]
+CMD ["python", "-m", "uvicorn", "main:app", "--host", "0.0.0.0", "--port", "8080"]
