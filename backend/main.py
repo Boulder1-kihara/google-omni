@@ -14,7 +14,8 @@ load_dotenv(dotenv_path=os.path.join(os.path.dirname(__file__), '.env'))
 app = FastAPI()
 _api_key = os.environ.get('GOOGLE_API_KEY', '')
 print(f"[STARTUP] API key prefix: {_api_key[:8]}")
-client = genai.Client(api_key=_api_key, http_options=types.HttpOptions(api_version='v1beta'))
+
+client = genai.Client(api_key=_api_key, http_options={'api_version': 'v1beta'})
 
 @app.websocket("/omni-live")
 async def omni_live_endpoint(websocket: WebSocket):
